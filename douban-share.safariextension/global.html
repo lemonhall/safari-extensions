@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<script>
+
+// 注册监听器
+safari.application.addEventListener("command", performCommand, false);
+safari.application.addEventListener("message",respondToMessage,false);
+
+
+function performCommand(event)
+{
+	 if (event.command != "share-to-douban")
+		return;
+	//向注入脚本发送消息
+	safari.application.activeBrowserWindow.activeTab.page.dispatchMessage("share-to-douban");
+	//share(document,screen,encodeURIComponent,500,360);
+}
+
+
+function respondToMessage(theMessageEvent) {
+    if(theMessageEvent.name === "shareThis") {
+        var url=theMessageEvent.message;
+        var curTab = safari.application.activeBrowserWindow;
+        var newTab = curTab.openTab();
+        
+        newTab.url=url;
+        console.log(url);
+    }
+}
+ 
+
+</script>
