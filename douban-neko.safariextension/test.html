@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>Sprite animations using CSS animations</title>
+	<style type="text/css" media="screen">
+
+		div.title {
+			font-size: 12px;
+			font-family: Arial;
+			background: #eee;
+			padding: 3px;
+			float: left;
+			margin-right: 22px;
+		}
+
+		div.animated-sprite {
+			width: 128px;
+			height: 160px;
+			float: left;
+		}
+		
+		div.anim {
+			-webkit-animation-duration: 0.5s;
+			-webkit-animation-iteration-count: infinite;
+		}
+
+		/*
+			Version 1 (background animation, no child divs, step easing)
+		*/
+		div.background-stepped {
+			background-image: url(animated-sprite.png);
+			-webkit-animation-name: 'background-stepped';
+			-webkit-animation-timing-function: step-start;
+		}
+		
+		@-webkit-keyframes 'background-stepped' {
+			0% { background-position: 0px 0px; }
+			12.5% { background-position: -128px 0px; }
+			25% { background-position: -256px 0px; }
+			37.5% { background-position: -384px 0px; }		
+			50% { background-position: -512px 0px; }
+			62.5% { background-position: -640px 0px; }
+			75% { background-position: -768px 0px; }
+			87.5% { background-position: -896px 0px; }
+			100% { background-position: 0px 0px; }
+		}
+		
+		/*
+			Version 2 (background animation, no child divs, linear easing hack)
+		*/		
+		div.background-eased {
+			background-image: url(animated-sprite.png);
+			-webkit-animation-name: 'background-eased';
+			-webkit-animation-timing-function: linear;
+		}
+		
+		@-webkit-keyframes 'background-eased' {
+			0% { background-position: 0px 0px; }
+
+			12.49% { background-position: -0px 0px; }
+			12.50% { background-position: -128px 0px; }
+
+			24.99% { background-position: -128px 0px; }
+			25.00% { background-position: -256px 0px; }
+
+			37.49% { background-position: -256px 0px; }
+			37.50% { background-position: -384px 0px; }
+
+			49.99% { background-position: -384px 0px; }			
+			50.00% { background-position: -512px 0px; }
+
+			62.49% { background-position: -512px 0px; }
+			62.50% { background-position: -640px 0px; }
+
+			74.99% { background-position: -640px 0px; }
+			75.00% { background-position: -768px 0px; }
+
+
+			87.49% { background-position: -768px 0px; }
+			87.50% { background-position: -896px 0px; }
+
+			99.99% { background-position: -896px 0px; }
+			100% { background-position: 0px 0px; }
+		}		
+
+
+		/*
+			Version 3 (translate3d animation, one child div, step easing)
+		*/
+		div.translated-stepped {
+			overflow: hidden;
+			-webkit-transform: translate3d(0,0,0);
+		}
+		
+		div.translated-stepped div {
+			background-image: url(animated-sprite.png);
+			width: 1024px;
+			height: 160px;
+			-webkit-transform: translate3d(0,0,0);
+			-webkit-animation-name: 'translated-stepped';
+			-webkit-animation-timing-function: step-start;
+		}
+		
+		@-webkit-keyframes 'translated-stepped' {
+			0% { -webkit-transform: translate3d(0px,0px, 0); }
+			12.5% { -webkit-transform: translate3d(-128px,0px, 0); }
+			25% { -webkit-transform: translate3d(-256px,0px, 0); }
+			37.5% { -webkit-transform: translate3d(-384px,0px, 0); }
+			50% { -webkit-transform: translate3d(-512px,0px, 0); }
+			62.5% { -webkit-transform: translate3d(-640px,0px, 0); }
+			75% { -webkit-transform: translate3d(-768px,0px, 0); }
+			87.5% { -webkit-transform: translate3d(-896px,0px, 0); }
+			100% { -webkit-transform: translate3d(0px,0px, 0); }
+		}	
+
+		/*
+			Version 4 (translate3d animation, one child div, linear easing hack)
+		*/
+		div.translated-eased {
+			overflow: hidden;
+			-webkit-transform: translate3d(0,0,0);
+		}
+		
+		div.translated-eased div {
+			background-image: url(animated-sprite.png);
+			width: 1024px;
+			height: 160px;
+			-webkit-transform: translate3d(0,0,0);
+			-webkit-animation-name: 'translated-eased';
+			-webkit-animation-timing-function: linear;
+		}
+
+		@-webkit-keyframes 'translated-eased' {
+			0% { -webkit-transform: translate3d(0px,0px, 0); }
+			
+			12.49% { -webkit-transform: translate3d(0px,0px, 0); }
+			12.5% { -webkit-transform: translate3d(-128px,0px, 0); }
+			
+			24.99% { -webkit-transform: translate3d(-128px,0px, 0); }
+			25% { -webkit-transform: translate3d(-256px,0px, 0); }
+			
+			37.49% { -webkit-transform: translate3d(-256px,0px, 0); }
+			37.5% { -webkit-transform: translate3d(-384px,0px, 0); }
+			
+			49.99% { -webkit-transform: translate3d(-384px,0px, 0); }
+			50% { -webkit-transform: translate3d(-512px,0px, 0); }
+			
+			62.49% { -webkit-transform: translate3d(-512px,0px, 0); }
+			62.5% { -webkit-transform: translate3d(-640px,0px, 0); }
+			
+			74.99% { -webkit-transform: translate3d(-640px,0px, 0); }
+			75% { -webkit-transform: translate3d(-768px,0px, 0); }
+			
+			87.49% { -webkit-transform: translate3d(-768px,0px, 0); }
+			87.5% { -webkit-transform: translate3d(-896px,0px, 0); }
+			
+			99.99% { -webkit-transform: translate3d(-896px,0px, 0); }
+			100% { -webkit-transform: translate3d(0px,0px, 0); }
+		}
+
+	</style>
+	<script type="text/javascript">
+		
+		// generateKeyframeAnimation("animated-sprite", 128, 160, 1024, 160, 8)
+		function generateKeyframeAnimation(animationName, frameWidth, frameHeight, spriteWidth, spriteHeight, frames) {
+			var css = '@-webkit-keyframes \''+animationName+'\' {', step = 100 / (frames), horizontalFrames = spriteWidth/frameWidth;
+			for (var i=0; i < frames; i++) {
+				css += '\n\t'+((i) * step)+'% { background-position: '+(-i*frameWidth)+'px '+((-Math.floor(i / horizontalFrames))*frameHeight)+'px; }';
+			};
+			return css+'\n}';
+		}
+		
+		function generateKeyframeAnimation3d(animationName, frameWidth, frameHeight, spriteWidth, spriteHeight, frames) {
+			var css = '@-webkit-keyframes \''+animationName+'\' {', step = 100 / (frames), horizontalFrames = spriteWidth/frameWidth;
+			for (var i=0; i < frames; i++) {
+				css += '\n\t'+((i) * step)+'% { -webkit-transform: translate3d('+(-i*frameWidth)+'px,'+((-Math.floor(i / horizontalFrames))*frameHeight)+'px, 0); }';
+			};
+			return css+'\n}';
+		}
+		
+	</script>
+</head>
+<body>
+
+	<div class="title">background, stepped</div>
+	<div class="title">background, eased</div>
+	<div class="title">translated, stepped</div>
+	<div class="title">translated, eased</div>
+
+	<div class="animated-sprite anim background-stepped" style="clear: both;"></div>
+	<div class="animated-sprite anim background-eased"></div>
+	<div class="animated-sprite translated-stepped"><div class="anim"></div></div>
+	<div class="animated-sprite translated-eased"><div class="anim"></div></div>
+
+</body>
+</html>
