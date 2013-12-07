@@ -28,15 +28,15 @@ var	mine_notes   = mine+"notes"
 
 $("#friend").append("<p><a href='"+mine_status+"'>>我的广播"+"</p>");
 
-$.get(mine_notes, function( data ) {
-	$("#friend").append("<p><a href='"+mine_notes+"'>>我的日记"+"</p>");
-  	var start = data.toString().indexOf('<div class="people_tags_more">');
-  		data  = data.toString().slice(start);
-  	var end   = data.indexOf('</div>');
-  		data  = data.slice(0,end+6);
-  	$("#friend").append(data);
-  	//console.log(data);
-});
+// $.get(mine_notes, function( data ) {
+// 	$("#friend").append("<p><a href='"+mine_notes+"'>>我的日记"+"</p>");
+//   	var start = data.toString().indexOf('<div class="people_tags_more">');
+//   		data  = data.toString().slice(start);
+//   	var end   = data.indexOf('</div>');
+//   		data  = data.slice(0,end+6);
+//   	$("#friend").append(data);
+//   	//console.log(data);
+// });
 
 // $.get("http://www.douban.com/contacts/list?tag=1", function( data ) {
 // 		var result =  data.toString();

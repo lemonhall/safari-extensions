@@ -272,13 +272,13 @@
 @-webkit-keyframes miao /* Safari and Chrome */
 {
 		0%		{background-position: -96px 0px; }
-		40%		{background-position: -96px 0px; }
+		40.99%	{background-position: -96px 0px; }
 
-		45% 	{background-position: -64px 0px;}
-		70% 	{background-position: -64px 0px;}
+		41% 	{background-position: -64px 0px;}
+		70.99% 	{background-position: -64px 0px;}
 
-		75% 	{background-position: -96px 0px; }
-		100%	{background-position: -96px 0px; }	
+		71% 	{background-position: -64px 0px; }
+		100%	{background-position: -64px 0px; }	
 }
 
 #neko {
