@@ -1,28 +1,39 @@
 <body>
 <style>
+.main{
+	width: 100%;
+	height: 100%;
+}
 .year{
-	width: 90%;
+	margin-top: 40px;
+	margin-left: 100px;
+	width: 100%;
+	height: 100%
 	float: left;
 }
 
 .month{
-	border:1px solid;
+	font-size: 18px;
 	width: 20%;
-	height: 20%;
+	height: 60px;
 	float: left;
+	filter: alpha(opacity=5);
+	opacity: 0.8;
 }
 .month:hover {
 	background-color: #FF00FF;
-	filter: alpha(opacity=30);
-    opacity: 0.05;
+    opacity: 0.3;
+	cursor:hand;
 }
 .result
 {
+	margin-left: 40px;
+	margin-right: 40px;
 }
 .bg-water
 {
-    width: 200%;
-    height: 200%;
+    width: 100%;
+    height: 100%;
     margin: 0px;
     position: absolute;
     z-index: -100;
@@ -32,64 +43,78 @@
     filter: alpha(opacity=5);
     -moz-opacity: 0.05;
     opacity: 0.05;
-    font-size: 159px;
+    font-size: 240px;
     color: White;
+    padding-top: 20px;
+    padding-left: 20px;
 }
 .left{
 	float: left;
 	margin-right: 10px;
 	margin-top: 10%;
+	margin-bottom:80px;
+}
+.left:hover {
+	cursor:hand;
+	font-weight:bold;
+	text-decoration:underline;
 }
 .right{
 	float: left;
 	margin-right: 10px;
 	margin-top: 10%;
+	margin-bottom:80px;
 }
-.right:after{
-	content: '\0020';
-	display: block;
-	clear: both;
+.right:hover {
+	cursor:hand;
+	font-weight:bold;
+	text-decoration:underline;
 }
 </style>
 <script type="text/javascript" src="./jquery.min.js"></script>
-
 <div class="bg-water">
 </div>
-<div class="left">
-left
-</div>
-<div class="year">
-	<div class="month">
-	</div>
-	<div class="month">
-	</div>
-	<div class="month">
-	</div>
-	<div class="month">
-	</div>
-	<div class="month">
-	</div>
-	<div class="month">
-	</div>
-	<div class="month">
-	</div>
-	<div class="month">
-	</div>
-	<div class="month">
-	</div>
-	<div class="month">
-	</div>
-	<div class="month">
-	</div>
-	<div class="month">
-	</div>
-</div>
-<div class="right">
-right
-</div>
 
-<div class="result">
-</div>
+<table class="main" >
+<tr>
+	<td>
+						
+						<div class="year">
+							<div class="month">
+							</div>
+							<div class="month">
+							</div>
+							<div class="month">
+							</div>
+							<div class="month">
+							</div>
+							<div class="month">
+							</div>
+							<div class="month">
+							</div>
+							<div class="month">
+							</div>
+							<div class="month">
+							</div>
+							<div class="month">
+							</div>
+							<div class="month">
+							</div>
+							<div class="month">
+							</div>
+							<div class="month">
+							</div>
+						</div>
+						
+	</td>
+	<td style="vertical-align:bottom;"><div class="left">&lt;&lt;last year</div><div class="right" style="">next year&gt;&gt;</div></td>
+</tr>
+<tr>
+	<td COLSPAN=2>
+		<div class="result"></div>
+	</td>
+</tr>
+</table>
 
 
 <script type="text/javascript" src="handlebars-v1.1.2.js"></script>
@@ -98,6 +123,7 @@ right
 	{{#each urls}}
 		<div class="entry">
 		  <h3><a href="{{url}}">{{title}}</a></h3>
+		  <li>{{url}}</li>
 		  <div class="summary">
 		    {{summary}}
 		  </div>
