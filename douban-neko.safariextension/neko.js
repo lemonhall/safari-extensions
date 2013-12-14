@@ -28,3 +28,10 @@ neko_ctl.click(function(){
 		 		miao_ctl.play();
 		 },4800);
 });
+
+// $(".lnk-people").each(function(){
+// 		var people=$(this).attr("href");
+// 		if(people==="http://www.douban.com/people/joycejojojo/"){
+// 			miao_ctl.play();
+// 		}
+// });

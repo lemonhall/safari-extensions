@@ -1,0 +1,174 @@
+<body>
+<style>
+.year{
+	width: 90%;
+	float: left;
+}
+
+.month{
+	border:1px solid;
+	width: 20%;
+	height: 20%;
+	float: left;
+}
+.month:hover {
+	background-color: #FF00FF;
+	filter: alpha(opacity=30);
+    opacity: 0.05;
+}
+.result
+{
+}
+.bg-water
+{
+    width: 200%;
+    height: 200%;
+    margin: 0px;
+    position: absolute;
+    z-index: -100;
+    top: 0px;
+    left: 0px;
+    background-color: #000;
+    filter: alpha(opacity=5);
+    -moz-opacity: 0.05;
+    opacity: 0.05;
+    font-size: 159px;
+    color: White;
+}
+.left{
+	float: left;
+	margin-right: 10px;
+	margin-top: 10%;
+}
+.right{
+	float: left;
+	margin-right: 10px;
+	margin-top: 10%;
+}
+.right:after{
+	content: '\0020';
+	display: block;
+	clear: both;
+}
+</style>
+<script type="text/javascript" src="./jquery.min.js"></script>
+
+<div class="bg-water">
+</div>
+<div class="left">
+left
+</div>
+<div class="year">
+	<div class="month">
+	</div>
+	<div class="month">
+	</div>
+	<div class="month">
+	</div>
+	<div class="month">
+	</div>
+	<div class="month">
+	</div>
+	<div class="month">
+	</div>
+	<div class="month">
+	</div>
+	<div class="month">
+	</div>
+	<div class="month">
+	</div>
+	<div class="month">
+	</div>
+	<div class="month">
+	</div>
+	<div class="month">
+	</div>
+</div>
+<div class="right">
+right
+</div>
+
+<div class="result">
+</div>
+
+
+<script type="text/javascript" src="handlebars-v1.1.2.js"></script>
+
+<script id="entry-template" type="text/x-handlebars-template">
+	{{#each urls}}
+		<div class="entry">
+		  <h3><a href="{{url}}">{{title}}</a></h3>
+		  <div class="summary">
+		    {{summary}}
+		  </div>
+		</div>
+	{{/each}}
+</script>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		var n = new Date();
+		var year = n.getFullYear();
+		var source   = $("#entry-template").html();
+		var template = Handlebars.compile(source);
+
+		var changYear=function(year){
+			$(".bg-water").html(year);
+		}
+		var formatDate = function(num){
+				if(num<10){
+					num = "0"+num;
+				}else{
+					num = num.toString();
+				}
+			return num;
+		}
+		var renderResult=function(start,end){
+			var api='http://210.152.156.164:8080/?start='+start+'&end='+end;
+			$.get(api,function(result){
+				var context = {urls:result}
+				var html = template(context);
+				console.log(html);
+
+				$(".result").html(html);
+			});
+		}
+
+
+
+		changYear(year);
+
+
+		$(".month").each(function(idx,item){
+			var self = $(this);
+
+				self.html(idx+1);
+		});
+
+		$(".month").click(function(){
+			var self = $(this);
+			var val  = self.html();
+			var month = parseInt(val);
+			var YearMonthKey = ""+year+formatDate(month);
+			var start = YearMonthKey+"01";
+			var end   = "";
+				if((month+1)===13){
+					end = ""+(year+1)+"0101";
+			}else{
+					end = ""+year+formatDate(month+1)+"01";
+			}
+				renderResult(start,end)
+		});
+
+		$(".left").click(function(){
+			year = year - 1;
+			changYear(year);
+		});
+
+		$(".right").click(function(){
+			year = year + 1;
+			changYear(year);
+		});
+	});
+</script>
+</body>

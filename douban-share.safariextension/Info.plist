@@ -20,6 +20,15 @@
 	<dict>
 		<key>Global Page</key>
 		<string>global.html</string>
+		<key>Popovers</key>
+		<array>
+			<dict>
+				<key>Filename</key>
+				<string>cal.html</string>
+				<key>Identifier</key>
+				<string>cal</string>
+			</dict>
+		</array>
 		<key>Toolbar Items</key>
 		<array>
 			<dict>
@@ -45,6 +54,10 @@
 			<key>End</key>
 			<array>
 				<string>main.js</string>
+			</array>
+			<key>Start</key>
+			<array>
+				<string>jquery.min.js</string>
 			</array>
 		</dict>
 	</dict>

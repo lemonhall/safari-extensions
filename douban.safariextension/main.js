@@ -28,6 +28,10 @@ var	mine_notes   = mine+"notes"
 
 $("#friend").append("<p><a href='"+mine_status+"'>>我的广播"+"</p>");
 
+//$("#friend").append("<p><a href='http://www.douban.com/people/joycejojojo/statuses'>>阿姨的广播"+"</p>");
+
+
+
 // $.get(mine_notes, function( data ) {
 // 	$("#friend").append("<p><a href='"+mine_notes+"'>>我的日记"+"</p>");
 //   	var start = data.toString().indexOf('<div class="people_tags_more">');
